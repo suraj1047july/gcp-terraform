@@ -1,17 +1,17 @@
-#terraform {
-#  required_providers {
- #   google = {
-  #    source  = "hashicorp/google"
-   #   version = "~> 5.0"
-    #}
-  #}
-#}
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 5.0"
+    }
+  }
+}
 
-#provider "google" {
- # project = "project-c20c8aac-20c5-4e25-8b9"
-  #region  = "asia-south2"
-  #zone    = "asia-south2-a"
-#}
+provider "google" {
+  project = "project-c20c8aac-20c5-4e25-8b9"
+  region  = "asia-south2"
+  zone    = "asia-south2-a"
+}
 
 # Create a Compute Instance
 #resource "google_compute_instance" "vm_instance" {
@@ -38,5 +38,5 @@
     #foo = "bar"
   #}
 
-  tags = ["web-server", "terraform"]
-}
+  #tags = ["web-server", "terraform"]
+#}
