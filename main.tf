@@ -9,15 +9,15 @@ terraform {
 
 provider "google" {
   project = "project-c20c8aac-20c5-4e25-8b9"
-  region  = "us-central1"
-  zone    = "us-central1-a"
+  region  = "asia-south2"
+  zone    = "asia-south2-a"
 }
 
 # Create a Compute Instance
 resource "google_compute_instance" "vm_instance" {
   name         = "terraform-gcp-vm"
   machine_type = "e2-micro" # Free-tier eligible
-  zone         = "us-central1-a"
+  zone         = "asia-south2-a"
 
   boot_disk {
     initialize_params {
