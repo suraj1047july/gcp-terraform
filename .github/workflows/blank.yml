@@ -34,7 +34,7 @@ jobs:
   - name: Authenticate to Google Cloud
     uses: 'google-github-actions/auth@v2'
     with:
-      workload_identity_provider: 'projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/terraform-pool/providers/terraform-provider'
+      workload_identity_provider: 'projects/160637402674/locations/global/workloadIdentityPools/terraform-pool/providers/terraform-provider'
       service_account: 'terraform-gcp@project-c20c8aac-20c5-4e25-8b9.iam.gserviceaccount.com'   
 
   # -------- Node Setup for Cortex --------
