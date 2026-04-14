@@ -18,6 +18,9 @@ jobs:
  terraform-plan:
   if: github.event_name == 'pull_request'
   runs-on: ubuntu-latest
+  permissions:
+    contents: 'read'
+    id-token: 'write' # CRITICAL: This allows OIDC to work
 
   # env:
   #   SCAN_PATH: "."
@@ -27,6 +30,12 @@ jobs:
 
   - name: Checkout Code
     uses: actions/checkout@v4
+
+  - name: Authenticate to Google Cloud
+    uses: 'google-github-actions/auth@v2'
+    with:
+      workload_identity_provider: 'projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/terraform-pool/providers/terraform-provider'
+      service_account: 'terraform-gcp@project-c20c8aac-20c5-4e25-8b9.iam.gserviceaccount.com'   
 
   # -------- Node Setup for Cortex --------
   - name: Set up Node.js
@@ -120,11 +129,20 @@ jobs:
 
   if: github.event_name == 'push'
   runs-on: ubuntu-latest
+  permissions:
+    contents: 'read'
+    id-token: 'write' # CRITICAL: This allows OIDC to work
 
   steps:
 
   - name: Checkout Code
     uses: actions/checkout@v4
+
+  - name: Authenticate to Google Cloud
+    uses: 'google-github-actions/auth@v2'
+    with:
+      workload_identity_provider: 'projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/terraform-pool/providers/terraform-provider'
+      service_account: 'terraform-gcp@project-c20c8aac-20c5-4e25-8b9.iam.gserviceaccount.com'   
 
 
   - name: Setup Terraform
